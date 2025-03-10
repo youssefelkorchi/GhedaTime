@@ -175,51 +175,94 @@ function LandingPage() {
       </div>
 
       {/* How It Works Section */}
-      <div className="py-16 bg-gradient-to-r from-purple-700 to-indigo-700">
+      <div className="py-24 bg-gradient-to-r from-purple-700 to-indigo-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-extrabold text-white sm:text-5xl">
               How GhedaTime Works
             </h2>
-            <p className="mt-4 max-w-2xl text-xl text-indigo-100 mx-auto">
-              Simple steps to boost your productivity
+            <p className="mt-6 max-w-2xl text-xl text-indigo-100 mx-auto">
+              Three simple steps to transform your productivity journey
             </p>
           </div>
 
-          <div className="mt-16">
-            <div className="relative">
-              {/* Connection line */}
-              <div className="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-indigo-400 bg-opacity-30 transform -translate-y-1/2"></div>
-              
-              <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
-                <div className="relative bg-white bg-opacity-10 rounded-lg p-8 backdrop-filter backdrop-blur-sm transform transition duration-500 hover:scale-105">
-                  <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 flex items-center justify-center h-16 w-16 rounded-full bg-indigo-500 text-white border-4 border-indigo-700">
-                    <span className="text-xl font-bold">1</span>
+          <div className="relative">
+            {/* Connection line with animation */}
+            <div className="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-indigo-400 via-purple-400 to-indigo-400 transform -translate-y-1/2 opacity-30"></div>
+            
+            <div className="grid grid-cols-1 gap-16 md:grid-cols-3">
+              {/* Step 1 */}
+              <div className="relative bg-white bg-opacity-10 rounded-2xl p-8 backdrop-filter backdrop-blur-lg transform transition duration-500 hover:scale-105 hover:bg-opacity-20 border border-indigo-400 border-opacity-20">
+                <div className="absolute -top-10 left-1/2 transform -translate-x-1/2">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-indigo-500 rounded-full blur opacity-50"></div>
+                    <div className="relative flex items-center justify-center h-20 w-20 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 border-4 border-white border-opacity-20">
+                      <span className="text-2xl font-bold text-white">1</span>
+                    </div>
                   </div>
-                  <h3 className="mt-6 text-xl font-medium text-white text-center">Create Tasks</h3>
-                  <p className="mt-2 text-base text-indigo-100 text-center">
-                    Add your tasks with details like priority, deadlines, and categories.
-                  </p>
                 </div>
-
-                <div className="relative bg-white bg-opacity-10 rounded-lg p-8 backdrop-filter backdrop-blur-sm transform transition duration-500 hover:scale-105">
-                  <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 flex items-center justify-center h-16 w-16 rounded-full bg-indigo-500 text-white border-4 border-indigo-700">
-                    <span className="text-xl font-bold">2</span>
-                  </div>
-                  <h3 className="mt-6 text-xl font-medium text-white text-center">Track Time</h3>
-                  <p className="mt-2 text-base text-indigo-100 text-center">
-                    Use our timer to track how much time you spend on each task.
+                <div className="mt-12">
+                  <h3 className="text-2xl font-bold text-white text-center mb-4">Create Tasks</h3>
+                  <p className="text-lg text-indigo-100 text-center leading-relaxed">
+                    Easily create and organize your tasks with priorities, deadlines, and custom categories.
                   </p>
+                  <div className="mt-6 flex justify-center">
+                    <div className="p-3 bg-indigo-600 bg-opacity-30 rounded-lg">
+                      <svg className="w-10 h-10 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
+              </div>
 
-                <div className="relative bg-white bg-opacity-10 rounded-lg p-8 backdrop-filter backdrop-blur-sm transform transition duration-500 hover:scale-105">
-                  <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 flex items-center justify-center h-16 w-16 rounded-full bg-indigo-500 text-white border-4 border-indigo-700">
-                    <span className="text-xl font-bold">3</span>
+              {/* Step 2 */}
+              <div className="relative bg-white bg-opacity-10 rounded-2xl p-8 backdrop-filter backdrop-blur-lg transform transition duration-500 hover:scale-105 hover:bg-opacity-20">
+                <div className="absolute -top-10 left-1/2 transform -translate-x-1/2">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-indigo-500 rounded-full blur opacity-50"></div>
+                    <div className="relative flex items-center justify-center h-20 w-20 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 border-4 border-white border-opacity-20">
+                      <span className="text-2xl font-bold text-white">2</span>
+                    </div>
                   </div>
-                  <h3 className="mt-6 text-xl font-medium text-white text-center">Analyze & Improve</h3>
-                  <p className="mt-2 text-base text-indigo-100 text-center">
-                    Review your productivity data and optimize your workflow.
+                </div>
+                <div className="mt-12">
+                  <h3 className="text-2xl font-bold text-white text-center mb-4">Track Progress</h3>
+                  <p className="text-lg text-indigo-100 text-center leading-relaxed">
+                    Monitor your time and progress with our intuitive tracking system and real-time updates.
                   </p>
+                  <div className="mt-6 flex justify-center">
+                    <div className="p-3 bg-indigo-600 bg-opacity-30 rounded-lg">
+                      <svg className="w-10 h-10 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Step 3 */}
+              <div className="relative bg-white bg-opacity-10 rounded-2xl p-8 backdrop-filter backdrop-blur-lg transform transition duration-500 hover:scale-105 hover:bg-opacity-20">
+                <div className="absolute -top-10 left-1/2 transform -translate-x-1/2">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-indigo-500 rounded-full blur opacity-50"></div>
+                    <div className="relative flex items-center justify-center h-20 w-20 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 border-4 border-white border-opacity-20">
+                      <span className="text-2xl font-bold text-white">3</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-12">
+                  <h3 className="text-2xl font-bold text-white text-center mb-4">Analyze & Improve</h3>
+                  <p className="text-lg text-indigo-100 text-center leading-relaxed">
+                    Get detailed insights and analytics to optimize your productivity and workflow.
+                  </p>
+                  <div className="mt-6 flex justify-center">
+                    <div className="p-3 bg-indigo-600 bg-opacity-30 rounded-lg">
+                      <svg className="w-10 h-10 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
