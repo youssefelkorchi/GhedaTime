@@ -1,15 +1,16 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { useToast } from '../contexts/ToastContext';
 
 function Navbar() {
-  const { currentUser, setCurrentUser } = useAuth();
+  const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
+  const { addToast } = useToast();
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    setCurrentUser(null);
+    logout();
+    addToast('Logged out successfully', 'success');
     navigate('/login');
   };
 
