@@ -9,6 +9,7 @@ import TaskList from './components/TaskList'
 import Dashboard from './components/Dashboard'
 import ProtectedRoute from './components/ProtectedRoute'
 import Layout from './components/Layout'
+import LandingPage from './components/LandingPage'
 import { AuthProvider } from './contexts/AuthContext'
 import { TaskProvider } from './contexts/TaskContext'
 import { ToastProvider } from './contexts/ToastContext'
@@ -20,11 +21,12 @@ createRoot(document.getElementById('root')).render(
         <ToastProvider>
           <Router>
             <Routes>
+              {/* Public routes */}
+              <Route path="/" element={<LandingPage />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
-              <Route path="/" element={<App />} />
               
-              {/* Protected routes with layout */}
+              {/* Protected routes */}
               <Route element={<ProtectedRoute />}>
                 <Route element={<Layout />}>
                   <Route path="/dashboard" element={<Dashboard />} />
@@ -33,7 +35,7 @@ createRoot(document.getElementById('root')).render(
               </Route>
               
               {/* Fallback route */}
-              <Route path="*" element={<Navigate to="/" replace />} />
+              <Route path="*" element={<Navigate to="/" />} />
             </Routes>
           </Router>
         </ToastProvider>

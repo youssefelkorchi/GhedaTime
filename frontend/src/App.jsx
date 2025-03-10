@@ -24,31 +24,35 @@ function App() {
             Welcome to GhedaTime
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
-            A playful project to manage tasks and delays
+            Your personal time management solution
           </p>
         </div>
 
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
           <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-            <div className="flex flex-col space-y-4">
-              <button
-                onClick={() => navigate('/login')}
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-              >
-                Login
-              </button>
-              <button
-                onClick={() => navigate('/signup')}
-                className="w-full flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-              >
-                Sign Up
-              </button>
+            <div className="space-y-6">
+              <div>
+                <button
+                  onClick={() => navigate('/login')}
+                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                >
+                  Sign in
+                </button>
+              </div>
+              <div>
+                <button
+                  onClick={() => navigate('/signup')}
+                  className="w-full flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                >
+                  Sign up
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
