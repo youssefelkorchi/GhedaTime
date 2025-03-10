@@ -1,91 +1,28 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 
-const AuthContext = createContext(null);
+const AuthContext = createContext();
 
-export const useAuth = () => {
-  const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
-  return context;
-};
+export function useAuth() {
+  return useContext(AuthContext);
+}
 
-export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+export function AuthProvider({ children }) {
+  const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
+  // Simulate checking for a stored user token
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      const userData = JSON.parse(localStorage.getItem('user'));
-      setUser(userData);
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setCurrentUser(JSON.parse(storedUser));
     }
     setLoading(false);
   }, []);
 
-  const login = async (email, password) => {
-    try {
-      setError(null);
-      const response = await axios.post('http://localhost:5000/api/auth/login', {
-        email,
-        password
-      });
-      
-      const { token, user } = response.data;
-      localStorage.setItem('token', token);
-      localStorage.setItem('user', JSON.stringify(user));
-      setUser(user);
-      
-      // Set default authorization header for all future requests
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      
-      return response.data;
-    } catch (err) {
-      setError(err.response?.data?.message || 'An error occurred during login');
-      throw err;
-    }
-  };
-
-  const signup = async (name, email, password) => {
-    try {
-      setError(null);
-      const response = await axios.post('http://localhost:5000/api/auth/signup', {
-        name,
-        email,
-        password
-      });
-      
-      const { token, user } = response.data;
-      localStorage.setItem('token', token);
-      localStorage.setItem('user', JSON.stringify(user));
-      setUser(user);
-      
-      // Set default authorization header for all future requests
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      
-      return response.data;
-    } catch (err) {
-      setError(err.response?.data?.message || 'An error occurred during signup');
-      throw err;
-    }
-  };
-
-  const logout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    setUser(null);
-    delete axios.defaults.headers.common['Authorization'];
-  };
-
   const value = {
-    user,
-    loading,
-    error,
-    login,
-    signup,
-    logout
+    currentUser,
+    setCurrentUser
   };
 
   return (
@@ -93,4 +30,4 @@ export const AuthProvider = ({ children }) => {
       {!loading && children}
     </AuthContext.Provider>
   );
-};
+}
