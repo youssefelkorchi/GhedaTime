@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![GhedaTime Logo](https://via.placeholder.com/200x200?text=GhedaTime)
+![GhedaTime Logo](./frontend/src/assets/logo.png)
 
 **The Ultimate Procrastinator's Paradise**
 
