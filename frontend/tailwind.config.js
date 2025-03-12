@@ -7,25 +7,22 @@ export default {
   theme: {
     extend: {
       animation: {
-        'float-slow': 'float 8s ease-in-out infinite',
-        'float-medium': 'float 6s ease-in-out infinite',
-        'float-fast': 'float 4s ease-in-out infinite',
-        'shake': 'shake 0.5s cubic-bezier(.36,.07,.19,.97) both',
+        'slide-right': 'slideRight 0.5s ease-out forwards',
+        'float-medium': 'float 0.5s ease-out forwards',
+        'bounce-light': 'bounce 1s infinite',
       },
       keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-20px)' },
+        slideRight: {
+          '0%': { transform: 'translateX(0)' },
+          '50%': { transform: 'translateX(10px)' },
+          '100%': { transform: 'translateX(0)' },
         },
-        shake: {
-          '0%, 100%': { transform: 'translateX(0)' },
-          '10%, 30%, 50%, 70%, 90%': { transform: 'translateX(-5px)' },
-          '20%, 40%, 60%, 80%': { transform: 'translateX(5px)' },
-        }
-      }
+        float: {
+          '0%': { transform: 'translateY(20px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+      },
     },
   },
-  plugins: [
-    require('@tailwindcss/forms'),
-  ],
+  plugins: [],
 }

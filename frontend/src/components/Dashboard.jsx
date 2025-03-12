@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { useTasks } from '../contexts/TaskContext';
-import NewTaskModal from './NewTaskModal';
+import TaskForm from './TaskForm'; // Make sure this import is present
 import { ClockIcon, CheckIcon, PlusIcon, ChartBarIcon, CalendarIcon } from '@heroicons/react/24/outline';
 
 function Dashboard() {
@@ -9,10 +9,22 @@ function Dashboard() {
   const { tasks, loading, updateTask } = useTasks();
   const [greeting, setGreeting] = useState('');
   const [animate, setAnimate] = useState(false);
-  const [isNewTaskModalOpen, setIsNewTaskModalOpen] = useState(false);
+  const [isTaskFormOpen, setIsTaskFormOpen] = useState(false);
+  const [selectedTask, setSelectedTask] = useState(null);
   const [selectedFilter, setSelectedFilter] = useState('all');
 
   // Function to toggle task completion status
+  const handleTaskToggle = async (taskId) => {
+    const task = tasks.find(t => t._id === taskId);
+    if (!task) return;
+    
+    const newStatus = task.status === 'completed' ? 'pending' : 'completed';
+    try {
+      await updateTask(taskId, { ...task, status: newStatus });
+    } catch (err) {
+      console.error('Failed to update task status', err);
+    }
+  };
 
 
   // Calculate task statistics
@@ -76,6 +88,18 @@ function Dashboard() {
     );
   }
 
+  // Function to handle opening the new task form
+  // Add this function to handle the button click
+  const openNewTaskForm = () => {
+    setSelectedTask({
+      title: '',
+      description: '',
+      dueDate: '',
+      status: 'pending'
+    });
+    setIsTaskFormOpen(true);
+  };
+
   return (
     <div className="container mx-auto p-4 max-w-6xl">
       <div className={`transition-all duration-700 ease-out transform ${animate ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
@@ -89,7 +113,7 @@ function Dashboard() {
               <p className="opacity-90">Here's your task overview for today</p>
             </div>
             <button
-              onClick={() => setIsNewTaskModalOpen(true)}
+              onClick={openNewTaskForm}
               className="bg-white text-indigo-600 px-4 py-2 rounded-md flex items-center hover:bg-indigo-50 transition-colors"
             >
               <PlusIcon className="h-5 w-5 mr-2" />
@@ -255,12 +279,15 @@ function Dashboard() {
           )}
         </div>
       </div>
-
-      {/* Task Creation Modal */}
-      {isNewTaskModalOpen && (
-        <NewTaskModal
-          isOpen={isNewTaskModalOpen}
-          onClose={() => setIsNewTaskModalOpen(false)}
+      
+      {/* Task Form Modal */}
+      {isTaskFormOpen && (
+        <TaskForm
+          task={selectedTask}
+          onClose={() => {
+            setIsTaskFormOpen(false);
+            setSelectedTask(null);
+          }}
         />
       )}
     </div>

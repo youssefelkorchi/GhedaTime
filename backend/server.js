@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const auth = require('./middleware/auth');
+const taskRoutes = require('./routes/tasks');
 
 // Load environment variables
 dotenv.config();
@@ -22,7 +23,9 @@ app.use(express.json());
 
 // Routes
 app.use('/api/auth', require('./routes/auth'));
+app.use('/api/tasks', taskRoutes);
 
+// Remove the old task routes from here
 // Test route
 app.get('/', (req, res) => {
   res.send('Welcome to GhedaTime API!');
