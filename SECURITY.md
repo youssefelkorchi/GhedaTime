@@ -17,7 +17,7 @@ We take security issues seriously. If you discover a vulnerability in GhedaTime,
 
 ### How to Report
 
-- **Submit a report via [GitHub Discussions](https://github.com/your-repo/discussions)** under the "Security" category.
+- **Submit a report via [LinkedIn](https://www.linkedin.com/in/youssefelkorchi/)** by sending a direct message.
 - Provide a detailed description of the vulnerability, including steps to reproduce it.
 
 ### What to Expect
